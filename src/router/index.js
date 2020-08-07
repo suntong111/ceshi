@@ -51,32 +51,60 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '后台管理系统', icon: 'dashboard' }
     }]
   },
 
   {
     path: '/example',
+    alwaysShow: true,
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    meta: { title: '商品管理', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'products',
+        name: 'products',
+        component: () => import('@/views/products/index'),
+        meta: { title: '商品列表', icon: 'table' }
       },
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: 'Tree', icon: 'tree' }
+      // }
+    ]
+  },
+
+  {
+    path: '/editproduct',
+    hidden: true,
+    component: Layout,
+    children: [
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'index/:id',
+        name: 'Editproduct',
+        component: () => import('@/views/editproduct/index'),
+        meta: { title: '编辑商品', icon: 'form' }
       }
     ]
   },
 
+  {
+    path: '/handtable',
+    // hidden: true,
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'handtable',
+        component: () => import('@/views/handtable/index'),
+        meta: { title: 'exel编辑器', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,
